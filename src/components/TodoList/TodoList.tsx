@@ -2,13 +2,18 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useTypedSelector } from "../../redux/store";
 import { ETab, ITodo } from "../../models";
 import { Todo } from "./Todo";
+import { ESSKeys } from "../../utils/sessionKeys";
+import { useDispatch } from "react-redux";
+import { setTodoList as setTodoListFromStore } from "../../redux/todoListReducer";
+
 
 export const TodoList = () => {
+  const dispatch = useDispatch()
   const todoListFromStore = useTypedSelector(s => s.todoList.todoList)
   const activeTab = useTypedSelector(s => s.todoList.activeTab)
   const [todoList, setTodoList] = useState<ITodo[]>(todoListFromStore)
 
-  const onChangeDisplay = useCallback((tab: string) => {
+  const onChangeDisplayTodoList = useCallback((tab: string) => {
     switch (tab) {
       case ETab.current:
         const activeTodoList = todoListFromStore.filter(todo => !todo.isCompleted)
@@ -26,8 +31,16 @@ export const TodoList = () => {
   }, [todoListFromStore])
 
   useEffect(() => {
-    onChangeDisplay(activeTab)
-  }, [activeTab, onChangeDisplay])
+    if (sessionStorage.getItem(ESSKeys.todoList)) {
+      const preparedData = JSON.parse(sessionStorage.getItem(ESSKeys.todoList) ?? '')
+      setTodoList(preparedData)
+      dispatch(setTodoListFromStore(preparedData))
+    }
+  }, [dispatch])
+
+  useEffect(() => {
+    onChangeDisplayTodoList(activeTab)
+  }, [activeTab, onChangeDisplayTodoList])
 
   return (
     <div className="tab-content">

@@ -3,6 +3,7 @@ import { useTypedSelector } from "../../redux/store";
 import { ETab } from "../../models";
 import { useDispatch } from "react-redux";
 import { setActiveTab } from "../../redux/todoListReducer";
+import { ESSKeys } from "../../utils/sessionKeys";
 
 const tabs = [
   {
@@ -25,6 +26,7 @@ export const Tabs = () => {
 
   const onChangeActiveTab = (name: string) => {
     dispatch(setActiveTab(name))
+    sessionStorage.setItem(ESSKeys.activeTab, name)
   }
 
   return (

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTypedSelector } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { setTodoList } from "../../redux/todoListReducer";
+import { ESSKeys } from "../../utils/sessionKeys";
 
 interface Props {
   name: string
@@ -21,6 +22,7 @@ export const Todo = (props: Props) => {
       isCompleted: !checked,
     } : todo)
     dispatch(setTodoList(preparedData))
+    sessionStorage.setItem(ESSKeys.todoList, JSON.stringify(preparedData))
   };
 
   return (

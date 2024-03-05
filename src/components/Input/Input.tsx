@@ -4,6 +4,7 @@ import { setTodoList } from "../../redux/todoListReducer";
 import { useTypedSelector } from "../../redux/store";
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from "react-toastify";
+import { ESSKeys } from "../../utils/sessionKeys";
 
 export const Input = () => {
   const dispatch = useDispatch()
@@ -15,14 +16,16 @@ export const Input = () => {
     if (newTodo.length > maxNumberOfCharacters) {
       toast.error('Task title is too long!')
     } else {
-      dispatch(setTodoList([
+      const preparedData = [
         ...todoList,
         {
           id: uuidv4(),
           name: newTodo,
           isCompleted: false,
         }
-      ]))
+      ]
+      dispatch(setTodoList(preparedData))
+      sessionStorage.setItem(ESSKeys.todoList, JSON.stringify(preparedData))
       setNewTodo('')
     }
   }
