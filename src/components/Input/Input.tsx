@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { setTodoList } from "../../redux/todoListReducer";
 import { useTypedSelector } from "../../redux/store";
 import { v4 as uuidv4 } from 'uuid';
-
+import { toast } from "react-toastify";
 
 export const Input = () => {
   const dispatch = useDispatch()
@@ -12,19 +12,23 @@ export const Input = () => {
   const maxNumberOfCharacters = 20
 
   const onAddTodo = () => {
-    dispatch(setTodoList([
-      ...todoList,
-      {
-        id: uuidv4(),
-        name: newTodo,
-        isCompleted: false,
-      }
-    ]))
-    setNewTodo('')
+    if (newTodo.length > maxNumberOfCharacters) {
+      toast.error('Task title is too long!')
+    } else {
+      dispatch(setTodoList([
+        ...todoList,
+        {
+          id: uuidv4(),
+          name: newTodo,
+          isCompleted: false,
+        }
+      ]))
+      setNewTodo('')
+    }
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-center mb-4">
+    <div className="d-flex justify-content-center align-items-center">
       <div className="form-outline flex-fill">
         <input 
           type="text" 

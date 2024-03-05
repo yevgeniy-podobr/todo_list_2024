@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useTypedSelector } from "../../redux/store";
-import { Todo } from "../Todo/Todo";
 import { ETab, ITodo } from "../../models";
+import { Todo } from "./Todo";
 
 export const TodoList = () => {
   const todoListFromStore = useTypedSelector(s => s.todoList.todoList)

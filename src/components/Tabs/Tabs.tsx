@@ -28,7 +28,7 @@ export const Tabs = () => {
   }
 
   return (
-    <ul className="nav nav-pills mb-4">
+    <ul className="nav nav-pills">
       {tabs.map(tab => (
         <li 
           className='nav-item' 
