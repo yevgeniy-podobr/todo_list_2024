@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Input, TodoList } from './components';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="vh-100" style={{'backgroundColor': '#e2d5de'}}>
+      <div className="container py-5 h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col col-xl-10" >
+
+            <div className="card" style={{'borderRadius': '15px'}}>
+              <div className="card-body p-5">
+                <Input />
+
+                <TodoList />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
