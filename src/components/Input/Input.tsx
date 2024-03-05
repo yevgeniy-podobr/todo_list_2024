@@ -9,6 +9,7 @@ export const Input = () => {
   const dispatch = useDispatch()
   const todoList = useTypedSelector(s => s.todoList.todoList)
   const [newTodo, setNewTodo] = useState<string>('')
+  const maxNumberOfCharacters = 20
 
   const onAddTodo = () => {
     dispatch(setTodoList([
@@ -35,7 +36,13 @@ export const Input = () => {
       </div>
       <button 
         className="btn btn-info ms-2"
+        style={{
+          "color": "#fff",
+          "backgroundColor": "#0d6efd",
+          "borderColor": "#0d6efd",
+        }}
         onClick={onAddTodo}
+        disabled={!newTodo}
       >Add</button>
     </div>
   )

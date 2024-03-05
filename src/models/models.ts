@@ -3,3 +3,9 @@ export interface ITodo {
   name: string,
   isCompleted: boolean
 }
+
+export enum ETab {
+  all = 'All',
+  current = 'Current',
+  completed = 'Completed'
+}

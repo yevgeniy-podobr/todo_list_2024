@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Input, TodoList } from './components';
+import { Input, Tabs, TodoList } from './components';
 
 function App() {
   return (
@@ -13,6 +13,8 @@ function App() {
             <div className="card" style={{'borderRadius': '15px'}}>
               <div className="card-body p-5">
                 <Input />
+
+                <Tabs />
 
                 <TodoList />
               </div>
