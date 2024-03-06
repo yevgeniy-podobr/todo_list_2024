@@ -13,8 +13,9 @@ export const Input = (): ReactElement => {
   const maxNumberOfCharacters = 20
 
   const onAddTodo = (): void => {
-    if (newTodo.length > maxNumberOfCharacters) {
-      toast.error('Task title is too long!')
+    const existingTodo = todoList.find(todo => todo.name.toLocaleLowerCase() === newTodo.toLocaleLowerCase())
+    if (newTodo.length > maxNumberOfCharacters || existingTodo) {
+      toast.error(existingTodo ? 'Task with this title exists!' : 'Task title is too long!')
     } else {
       const preparedData = [
         ...todoList,
