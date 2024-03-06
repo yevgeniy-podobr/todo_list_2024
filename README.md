@@ -2,7 +2,7 @@
 
 ## Demo link
 
-Follow the link to the [live demo]
+Follow the link to the [live demo](http://yevgeniy-podobr.github.io/todo_list_2024)
 
 ## Tech Stack
 
