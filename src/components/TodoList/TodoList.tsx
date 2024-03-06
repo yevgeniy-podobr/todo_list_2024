@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useTypedSelector } from "../../redux/store";
-import { ETab, ITodo } from "../../models";
-import { Todo } from "./Todo";
-import { ESSKeys } from "../../utils/sessionKeys";
-import { useDispatch } from "react-redux";
-import { setTodoList as setTodoListFromStore } from "../../redux/todoListReducer";
+import React, { ReactElement, useCallback, useEffect, useState } from "react"
+import { useTypedSelector } from "../../redux/store"
+import { ETab, ITodo } from "../../models"
+import { Todo } from "./Todo"
+import { ESSKeys } from "../../utils/sessionKeys"
+import { useDispatch } from "react-redux"
+import { setTodoList as setTodoListFromStore } from "../../redux/todoListReducer"
 
-export const TodoList = () => {
+export const TodoList = (): ReactElement => {
   const dispatch = useDispatch()
   const todoListFromStore = useTypedSelector(s => s.todoList.todoList)
   const activeTab = useTypedSelector(s => s.todoList.activeTab)
@@ -17,15 +17,15 @@ export const TodoList = () => {
       case ETab.current:
         const activeTodoList = todoListFromStore.filter(todo => !todo.isCompleted)
         setTodoList(activeTodoList)
-        break;
+        break
       case ETab.completed:
         const completedTodoList = todoListFromStore.filter(todo => todo.isCompleted)
         setTodoList(completedTodoList)
-        break;
+        break
       
       default:
         setTodoList(todoListFromStore)
-        break;
+        break
     }
   }, [todoListFromStore])
 
@@ -44,22 +44,22 @@ export const TodoList = () => {
   return (
     <div className="tab-content d-flex" style={{ height: '50vh' }}>
       <div className="tab-pane fade show active w-100 overflow-y-auto">
-        {todoList.length ? (
+        {todoList.length ?
           <ul className="list-group mb-0">
-            {todoList.map(todo => (
+            {todoList.map(todo =>
               <Todo
                 key={todo.id}
                 name={todo.name}
                 isCompleted={todo.isCompleted}
                 id={todo.id}
               />
-            ))}
+            )}
           </ul>
-        ) : (
+          :
           <div className="d-flex justify-content-center align-items-center h-50">
             <p className="fs-3">The list is empty...</p>
           </div>
-        )}
+        }
 
       </div>
     </div>

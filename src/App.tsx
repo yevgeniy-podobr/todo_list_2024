@@ -1,15 +1,15 @@
-import React, { useEffect, useMemo } from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Input, Tabs, TodoList } from './components';
-import { useTypedSelector } from './redux/store';
-import { useDispatch } from 'react-redux';
-import { ESSKeys } from './utils/sessionKeys';
-import { setActiveTab } from './redux/todoListReducer';
+import React, { ReactElement, useEffect, useMemo } from 'react'
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { Input, Tabs, TodoList } from './components'
+import { useTypedSelector } from './redux/store'
+import { useDispatch } from 'react-redux'
+import { ESSKeys } from './utils/sessionKeys'
+import { setActiveTab } from './redux/todoListReducer'
 
-function App() {
+export const App = (): ReactElement => {
   const dispatch = useDispatch()
   const todoList = useTypedSelector(s => s.todoList.todoList)
 
@@ -53,7 +53,5 @@ function App() {
         </div>
       </div>
     </div>
-  );
+  )
 }
-
-export default App;

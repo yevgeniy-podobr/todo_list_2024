@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setTodoList } from "../../redux/todoListReducer";
-import { useTypedSelector } from "../../redux/store";
-import { v4 as uuidv4 } from 'uuid';
-import { toast } from "react-toastify";
-import { ESSKeys } from "../../utils/sessionKeys";
+import React, { ReactElement, useState } from "react"
+import { useDispatch } from "react-redux"
+import { setTodoList } from "../../redux/todoListReducer"
+import { useTypedSelector } from "../../redux/store"
+import { v4 as uuidv4 } from 'uuid'
+import { toast } from "react-toastify"
+import { ESSKeys } from "../../utils/sessionKeys"
 
-export const Input = () => {
+export const Input = (): ReactElement => {
   const dispatch = useDispatch()
   const todoList = useTypedSelector(s => s.todoList.todoList)
   const [newTodo, setNewTodo] = useState<string>('')
   const maxNumberOfCharacters = 20
 
-  const onAddTodo = () => {
+  const onAddTodo = (): void => {
     if (newTodo.length > maxNumberOfCharacters) {
       toast.error('Task title is too long!')
     } else {
@@ -38,8 +38,8 @@ export const Input = () => {
           className="form-control" 
           placeholder="New todo..."
           value={newTodo}  
-          onChange={(e) => setNewTodo(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && onAddTodo()}
+          onChange={(e): void => setNewTodo(e.target.value)}
+          onKeyDown={(e): false | void => e.key === "Enter" && onAddTodo()}
         />
       </div>
       <button 

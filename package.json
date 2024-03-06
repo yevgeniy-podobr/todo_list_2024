@@ -30,8 +30,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "@wemake-services/typescript/recommended"
     ]
   },
   "browserslist": {
@@ -47,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.8"
+    "@types/uuid": "^9.0.8",
+    "@wemake-services/eslint-config-typescript": "^3.1.1"
   }
 }

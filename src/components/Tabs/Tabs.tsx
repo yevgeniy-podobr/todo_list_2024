@@ -1,9 +1,9 @@
-import React from "react";
-import { useTypedSelector } from "../../redux/store";
-import { ETab } from "../../models";
-import { useDispatch } from "react-redux";
-import { setActiveTab } from "../../redux/todoListReducer";
-import { ESSKeys } from "../../utils/sessionKeys";
+import React, { ReactElement } from "react"
+import { useTypedSelector } from "../../redux/store"
+import { ETab } from "../../models"
+import { useDispatch } from "react-redux"
+import { setActiveTab } from "../../redux/todoListReducer"
+import { ESSKeys } from "../../utils/sessionKeys"
 
 const tabs = [
   {
@@ -20,26 +20,26 @@ const tabs = [
   },
 ]
 
-export const Tabs = () => {
+export const Tabs = (): ReactElement => {
   const dispatch = useDispatch()
   const activeTab = useTypedSelector(s => s.todoList.activeTab)
 
-  const onChangeActiveTab = (name: string) => {
+  const onChangeActiveTab = (name: string): void => {
     dispatch(setActiveTab(name))
     sessionStorage.setItem(ESSKeys.activeTab, name)
   }
 
   return (
     <ul className="nav nav-pills">
-      {tabs.map(tab => (
+      {tabs.map(tab => 
         <li 
           className='nav-item' 
           key={tab.id}
-          onClick={() => onChangeActiveTab(tab.name)}
+          onClick={(): void => onChangeActiveTab(tab.name)}
         >
           <button className={`nav-link ${activeTab === tab.name ? 'active' : ''}`}>{tab.name}</button>
         </li>
-      ))}
+      )}
     </ul>
   )
 }
