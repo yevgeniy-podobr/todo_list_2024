@@ -27,14 +27,17 @@ export const Todo = (props: Props) => {
 
   return (
     <li className="list-group-item d-flex align-items-center border-0 mb-2 rounded"
-      style={{'backgroundColor': '#f4f6f7'}}>
-      <input 
-        className="form-check-input me-2" 
-        type="checkbox" 
-        checked={checked}
-        onChange={handleChange} 
-      />
-      {checked ? <s>{name}</s> : name}
+      style={{ backgroundColor: '#f4f6f7' }}>
+        <label className="w-100">
+          <input 
+            className="form-check-input me-2"
+            style={{ boxShadow: 'none' }}
+            type="checkbox" 
+            checked={checked}
+            onChange={handleChange} 
+          />
+          {checked ? <s>{name}</s> : name}
+        </label>
     </li>
   )
 }

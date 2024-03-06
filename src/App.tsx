@@ -23,7 +23,7 @@ function App() {
   }, [dispatch])
 
   return (
-    <div className="vh-100" style={{'backgroundColor': '#e2d5de'}}>
+    <div className="vh-100" style={{ backgroundColor: '#a6cbff' }}>
       <ToastContainer
         limit={3}
         newestOnTop={true}
@@ -34,7 +34,7 @@ function App() {
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-10" >
 
-            <div className="card" style={{'borderRadius': '15px'}}>
+            <div className="card" style={{ borderRadius: '15px' }}>
               <div className="card-body p-5">
                 <Input />
                 <div className="col d-flex justify-content-space-between align-items-center my-4">

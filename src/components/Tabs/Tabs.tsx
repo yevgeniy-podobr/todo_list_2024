@@ -37,7 +37,7 @@ export const Tabs = () => {
           key={tab.id}
           onClick={() => onChangeActiveTab(tab.name)}
         >
-          <button className={`nav-link ${activeTab === tab.name && 'active'}`}>{tab.name}</button>
+          <button className={`nav-link ${activeTab === tab.name ? 'active' : ''}`}>{tab.name}</button>
         </li>
       ))}
     </ul>

@@ -39,6 +39,7 @@ export const Input = () => {
           placeholder="New todo..."
           value={newTodo}  
           onChange={(e) => setNewTodo(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && onAddTodo()}
         />
       </div>
       <button 
