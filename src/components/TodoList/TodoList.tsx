@@ -6,7 +6,6 @@ import { ESSKeys } from "../../utils/sessionKeys";
 import { useDispatch } from "react-redux";
 import { setTodoList as setTodoListFromStore } from "../../redux/todoListReducer";
 
-
 export const TodoList = () => {
   const dispatch = useDispatch()
   const todoListFromStore = useTypedSelector(s => s.todoList.todoList)
@@ -43,18 +42,25 @@ export const TodoList = () => {
   }, [activeTab, onChangeDisplayTodoList])
 
   return (
-    <div className="tab-content">
-      <div className="tab-pane fade show active">
-        <ul className="list-group mb-0">
-          {todoList.map(todo => (
-            <Todo
-              key={todo.id}
-              name={todo.name}
-              isCompleted={todo.isCompleted}
-              id={todo.id}
-            />
-          ))}
-        </ul>
+    <div className="tab-content d-flex" style={{ height: '50vh' }}>
+      <div className="tab-pane fade show active w-100 overflow-y-auto">
+        {todoList.length ? (
+          <ul className="list-group mb-0">
+            {todoList.map(todo => (
+              <Todo
+                key={todo.id}
+                name={todo.name}
+                isCompleted={todo.isCompleted}
+                id={todo.id}
+              />
+            ))}
+          </ul>
+        ) : (
+          <div className="d-flex justify-content-center align-items-center h-50">
+            <p className="fs-3">The list is empty...</p>
+          </div>
+        )}
+
       </div>
     </div>
   )
